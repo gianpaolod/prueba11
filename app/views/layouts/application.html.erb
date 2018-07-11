@@ -11,17 +11,40 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+        <div class="row">
+        
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        
+        <% if flash[:error] %>
+          <div class="alert alert-error">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        
+        <% if flash[:success] %>
+          <div class="alert alert-success">
+            <%= flash[:success] %>
+          </div>
+        <% end %>
+
+        
+        <div>
+
   </head>
     <!-- este es el selector de navbars -->
     <%= render 'layouts/navbar2' %>
   <body>
-    <!-- este es el selector de navbars -->
-    <%= render 'layouts/navbar2' %>
     <!-- configuracion para alertas y noticias de devise -->
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
