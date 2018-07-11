@@ -1,25 +1,33 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-     <%= link_to image_tag("cdlogsmini.jpeg", alt: "Brand"), root_path, :class=>'navbar-brand no-padding' %>
-    </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+  <a class="navbar-brand" href="#"><%= link_to image_tag("cdlogsmini.jpeg", alt: "Brand"), root_path, :class=>'navbar-brand no-padding' %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+
       <%= link_to "SmartLogs", root_path, :class => 'nav-item nav-link' %>
       <%= link_to "RMAI", rmai_index_path, :class => 'nav-item nav-link' %>
-      <% if user_signed_in? %>
-        <ul>
-          <a>class="nav-item dropdown"><%= current_user.email %></a>
-          <a><%= link_to 'Edit profile', edit_user_registration_path %></a>
-          <a class="dropdown-item"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
-        </ul>
-      <% else %>
-        <ul class="nav-item dropdown-toggle">Register
-          <li><%= link_to "Sign up", new_user_registration_path, :class => 'dropdown-item' %></li>
-          <li><%= link_to "Login", new_user_session_path, :class => 'dropdown-item' %></li>
-        </ul>
-      <% end %>
+
+
+      <li class="nav-item dropdown">
+
+        <% if user_signed_in? %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.email %></a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'dropdown-item' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item' %></a>
+          </div>
+        <% else %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Check it</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Sign up", new_user_registration_path, :class => 'dropdown-item' %>
+            <%= link_to "Login", new_user_session_path, :class => 'dropdown-item' %>
+          </div>
+        <% end %>
+
+      </li>
+    </ul>
   </div>
 </nav>
+
